@@ -16,7 +16,7 @@ app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 navbar = dbc.NavbarSimple(
 children=[
-    dbc.NavItem(dbc.NavLink("Page 1", href="#")),
+    dbc.NavItem(dbc.NavLink("Liste fichier", href="#")),
     dbc.DropdownMenu(
         children=[
             dbc.DropdownMenuItem("More pages", header=True),
@@ -36,7 +36,6 @@ dark=True,
 
 app.layout = html.Div(
     children=[
-
         navbar,
     ]
 )
