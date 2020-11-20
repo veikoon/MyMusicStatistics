@@ -7,4 +7,4 @@ class Launcher:
         get_metadata = GetMetadata()
         songs = get_metadata.get_songs()
         print(songs)
-        server = Index().run_server()
+        Index().run_server()
