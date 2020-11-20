@@ -2,15 +2,13 @@
 # Imports
 #
 
-import dash
-import dash_core_components as dcc
 import dash_html_components as html
 import dash_bootstrap_components as dbc
 import dash_table
 from dash.dependencies import Input, Output, State
 
-from web.navbar import nav
-from web.app import app
+from dataViz.web.navbar import nav
+from dataViz.web.app import app
 from get_metadata import GetMetadata
 
 get_metada = GetMetadata()

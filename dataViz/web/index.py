@@ -2,16 +2,14 @@
 # Imports
 #
 
-import dash
 import dash_core_components as dcc
 import dash_html_components as html
-import dash_bootstrap_components as dbc
 
-from web.home import layout_home
-from web.list_file import layout_list
-from web.year import layout_year
+from dataViz.web.home import layout_home
+from dataViz.web.list_file import layout_list
+from dataViz.web.year import layout_year
 from dash.dependencies import Input, Output
-from web.app import app
+from dataViz.web.app import app
 
 class Index:
 

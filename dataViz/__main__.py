@@ -1,5 +1,6 @@
-from launcher import Launcher
+from dataViz.launcher import Launcher
 
 
 if __name__ == '__main__':
     Launcher().run_program()
+
