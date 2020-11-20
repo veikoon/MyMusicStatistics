@@ -3,19 +3,21 @@ import os
 import re
 import json
 from json import JSONDecodeError
+import codecs
 
 
 class GetMetadata:
 
     def __get_json_songs(self, file_name):
         try:
-            file = open(file_name)
+            file = codecs.open(file_name, "r", "utf8")
         except IOError:
             raise RuntimeError("Could not find source file : \"{}\".".format(file_name))
         else:
             try:
+                songs = json.load(file, encoding="latin-1")
                 file.close()
-                return json.load(file)
+                return songs
             except JSONDecodeError:
                 raise RuntimeError("JSON file contains errors.")
 

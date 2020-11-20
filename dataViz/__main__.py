@@ -1,4 +1,4 @@
-from dataViz.launcher import Launcher
+from launcher import Launcher
 
 
 if __name__ == '__main__':

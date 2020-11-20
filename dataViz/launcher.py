@@ -1,5 +1,5 @@
 #from web.index import Index
-from dataViz.get_metadata import GetMetadata
+from get_metadata import GetMetadata
 import argparse
 
 
