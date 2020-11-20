@@ -6,8 +6,8 @@ import re
 class GetMetadata:
 
     def __init__(self):
-        #self.__PATH = './Library/'
-        self.__PATH = '../../../../Musique/'
+        self.__PATH = './Library/'
+        #self.__PATH = '../../../../Musique/'
 
     def get_songs(self):
         songs = dict()
@@ -26,26 +26,16 @@ class GetMetadata:
                                      "bit_rate": song.info.bit_rate_str}
             temp_song = songs[song.tag.title].copy()
             for key, value in songs[song.tag.title].items():
-                if key == "genre":
-                    if value is None:
-                        temp_song.pop(key)
-                    else:
-                        temp_song["genre"] = str(song.tag.genre).lstrip("()0123456789")
-                if key == "bit_rate":
-                    if value is None:
-                        temp_song.pop(key)
-                    else:
-                        temp_song["bit_rate"] = int(str(list(map(int, re.findall("\d+", temp_song["bit_rate"])))).strip("[]"))
-                if key == "release_date":
-                    if value is None:
-                        temp_song.pop(key)
-                    else:
-                        temp_song["release_date"] = int(str(temp_song["release_date"]))
-                if temp_song["album"] == "[non-album tracks]":
-                    if value is None:
-                        temp_song.pop(key)
-                    else:
-                        temp_song["album"] = "Single"
+                if value is None:
+                    temp_song.pop(key)
+                elif key == "genre":
+                    temp_song["genre"] = str(song.tag.genre).lstrip("()0123456789")
+                elif key == "bit_rate":
+                    temp_song["bit_rate"] = int(str(list(map(int, re.findall("\d+", temp_song["bit_rate"])))).strip("[]"))
+                elif key == "release_date":
+                    temp_song["release_date"] = int(str(temp_song["release_date"]))
+                elif key == "album" and temp_song["album"] == "[non-album tracks]":
+                    temp_song["album"] = "Single"
             songs[song.tag.title] = temp_song
 
         return songs
