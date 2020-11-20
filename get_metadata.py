@@ -12,8 +12,7 @@ class GetMetadata:
             if not filename.endswith(".mp3"):
                 pass
             song = eyed3.load(self.__PATH + filename)
-            songs[song.tag.title] = {"artist": song.tag.artist, "album": song.tag.album,
-                                         "release_date": str(song.tag.release_date), "genre": song.tag.genre}
+            songs[song.tag.title] = {"artist": song.tag.artist, "album": song.tag.album, "release_date": str(song.tag.release_date), "genre": song.tag.genre}
             temp_song = songs[song.tag.title].copy()
             for key, value in songs[song.tag.title].items():
                 if value is None:

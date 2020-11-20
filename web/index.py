@@ -9,6 +9,7 @@ import dash_bootstrap_components as dbc
 
 from web.home import layout_home
 from web.list_file import layout_list
+from web.year import layout_year
 from dash.dependencies import Input, Output
 from web.app import app
 
@@ -25,10 +26,12 @@ class Index:
             [Input('url', 'pathname')],
         )
         def display_page(pathname):
-            if pathname == '/home':
+            if pathname == '/':
                 return layout_home
             elif pathname == '/list':
                 return layout_list
+            elif pathname == '/year':
+                return layout_year
             else:
                 return '404'
 

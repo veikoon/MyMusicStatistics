@@ -10,7 +10,8 @@ import dash_bootstrap_components as dbc
 nav = dbc.NavbarSimple(
     children=[
         dbc.NavItem(dbc.NavLink("Liste fichier", href="list")),
-        dbc.NavItem(dbc.NavLink("Accueil", href="home")),
+        dbc.NavItem(dbc.NavLink("Accueil", href="/")),
+        dbc.NavItem(dbc.NavLink("Year", href="year")),
         dbc.DropdownMenu(
             children=[
                 dbc.DropdownMenuItem("More pages", header=True),
