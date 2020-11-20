@@ -33,7 +33,7 @@ class GetMetadata:
                     temp_song["bit_rate"] = int(str(list(map(int, re.findall("\d+", temp_song["bit_rate"])))).strip("[]"))
                 elif key == "release_date":
                     temp_song["release_date"] = int(str(temp_song["release_date"]))
-                elif temp_song["album"] == "[non-album tracks]":
+                elif key == "album" and temp_song["album"] == "[non-album tracks]":
                     temp_song["album"] = "Single"
             songs[song.tag.title] = temp_song
 
