@@ -14,15 +14,15 @@ class GetMetadata:
             if not filename.endswith(".mp3"):
                 pass
             song = eyed3.load(self.__PATH + filename)
-            songs[song.tag.title] = {"title": str(song.tag.title),
-                                     "artist": str(song.tag.artist),
-                                     "album": str(song.tag.album),
-                                     "release_date": int(str(song.tag.release_date)),
-                                     "genre": str(song.tag.genre),
-                                     "publisher": str(song.tag.publisher),
-                                     "composer": str(song.tag.composer),
-                                     "duration": int(float(str(song.info.time_secs))),
-                                     "bit_rate": str(song.info.bit_rate_str)}
+            songs[song.tag.title] = {"title": song.tag.title,
+                                     "artist": song.tag.artist,
+                                     "album": song.tag.album,
+                                     "release_date": song.tag.release_date,
+                                     "genre": song.tag.genre,
+                                     "publisher": song.tag.publisher,
+                                     "composer": song.tag.composer,
+                                     "duration": round(float(str(song.info.time_secs)), 2),
+                                     "bit_rate": song.info.bit_rate_str}
             temp_song = songs[song.tag.title].copy()
             for key, value in songs[song.tag.title].items():
                 if value is None:
@@ -30,7 +30,9 @@ class GetMetadata:
                 elif key == "genre":
                     temp_song["genre"] = str(song.tag.genre).lstrip("()0123456789")
                 elif key == "bit_rate":
-                    temp_song["bit_rate"] = str(list(map(int, re.findall("\d+", temp_song["bit_rate"])))).strip("[]")
+                    temp_song["bit_rate"] = int(str(list(map(int, re.findall("\d+", temp_song["bit_rate"])))).strip("[]"))
+                elif key == "release_date":
+                    temp_song["release_date"] = int(str(temp_song["release_date"]))
                 elif temp_song["album"] == "[non-album tracks]":
                     temp_song["album"] = "Single"
             songs[song.tag.title] = temp_song
