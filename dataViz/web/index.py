@@ -19,9 +19,9 @@ class Index:
         home = Home()
         year = Year()
 
-        layout_list = liste.getLayout(songs)
-        layout_home = home.getLayout()
-        layout_year = year.getLayout()
+        layout_list = liste.get_layout(songs)
+        layout_home = home.get_layout()
+        layout_year = year.get_layout(songs)
 
         app.layout = html.Div([
             dcc.Location(id='url', refresh=False),

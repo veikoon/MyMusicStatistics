@@ -13,7 +13,7 @@ from get_metadata import GetMetadata
 
 class ListFile:
 
-    def getLayout(self, songs):
+    def get_layout(self, songs):
         keys = []
         for keys,values in songs.items():
             keys = values.keys()
