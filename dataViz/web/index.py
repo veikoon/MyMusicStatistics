@@ -5,15 +5,20 @@
 import dash_core_components as dcc
 import dash_html_components as html
 
-from dataViz.web.home import layout_home
-from dataViz.web.list_file import layout_list
-from dataViz.web.year import layout_year
+from web.home import Home
+from web.list_file import ListFile
+from web.year import Year
 from dash.dependencies import Input, Output
-from dataViz.web.app import app
+from web.app import app
 
 class Index:
 
-    def run_server(self):
+    def run_server(self, songs):
+
+        layout_list = ListFile.getLayout(songs)
+        layout_home = Home.getLayout()
+        layout_year = Year.getLayout()
+
         app.layout = html.Div([
             dcc.Location(id='url', refresh=False),
             html.Div(id='page-content')
@@ -33,4 +38,4 @@ class Index:
             else:
                 return '404'
 
-        app.run_server(debug=True)
+        app.run_server()

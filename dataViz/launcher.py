@@ -1,14 +1,12 @@
 #from web.index import Index
 from get_metadata import GetMetadata
+from web.index import Index
 import argparse
 
 
 class Launcher:
 
     def run_program(self):
-        """
-        Index().run_server()
-        """
 
         # Argument parsing
         parser = argparse.ArgumentParser(description="Visualize song data.")
@@ -19,4 +17,4 @@ class Launcher:
             source = args.j
         get_metadata = GetMetadata()
         songs = get_metadata.get_songs(source)
-        print(songs)
+        Index().run_server(songs)

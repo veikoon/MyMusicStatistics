@@ -3,10 +3,16 @@
 #
 
 import dash_html_components as html
-from dataViz.web.navbar import nav
+from web.navbar import nav
 
-layout_home = html.Div(
-    children=[
-        nav,
-    ]
-)
+class Home:
+    
+    def getLayout():
+
+        layout_home = html.Div(
+            children=[
+                nav,
+            ]
+        )
+
+        return layout_home
