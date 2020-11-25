@@ -15,9 +15,13 @@ class Index:
 
     def run_server(self, songs):
 
-        layout_list = ListFile.getLayout(songs)
-        layout_home = Home.getLayout()
-        layout_year = Year.getLayout()
+        liste = ListFile()
+        home = Home()
+        year = Year()
+
+        layout_list = liste.getLayout(songs)
+        layout_home = home.getLayout()
+        layout_year = year.getLayout()
 
         app.layout = html.Div([
             dcc.Location(id='url', refresh=False),

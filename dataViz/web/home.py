@@ -7,7 +7,7 @@ from web.navbar import nav
 
 class Home:
     
-    def getLayout():
+    def getLayout(self):
 
         layout_home = html.Div(
             children=[

@@ -10,19 +10,23 @@ from web.navbar import nav
 
 class Year:
 
-    def getLayout():
-        songs = {'Starlight':{'release_date':'2005'}, 'Never Too Late':{'release_date':'2008'}, 'Tear in My Heart':{'release_date':'2002'},}
-        year = []
-        index = [1,2,3]
-        for element in songs:
-            year.append(songs[element]['release_date'])
+    def getLayout(self):
 
-        fig = px.scatter(x=index, y=year)
-
+        graphique = dcc.Graph(
+        id='example-graph',
+        figure={
+            'data': [
+                {'x': [1900, 1950, 2008], 'y': [45, 21, 13], 'type': 'bar', 'name': 'SF'},
+            ],
+            'layout': {
+                'title': 'Dash Data Visualization'
+            }
+        }
+    )
         layout_year = html.Div(
             children=[
                 nav,
-                dcc.Graph(figure=fig),
+                graphique,
             ]
         )
 

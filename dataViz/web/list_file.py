@@ -13,7 +13,7 @@ from get_metadata import GetMetadata
 
 class ListFile:
 
-    def getLayout(songs):
+    def getLayout(self, songs):
         keys = []
         for keys,values in songs.items():
             keys = values.keys()
@@ -60,5 +60,5 @@ class ListFile:
             if n:
                 return not is_open
             return is_open
-            
+
         return layout_list
