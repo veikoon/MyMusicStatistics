@@ -42,4 +42,4 @@ class Index:
             else:
                 return '404'
 
-        app.run_server()
+        app.run_server(debug=True)

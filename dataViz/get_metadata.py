@@ -21,8 +21,22 @@ class GetMetadata:
             except JSONDecodeError:
                 raise RuntimeError("JSON file contains errors.")
 
+    def __generateExemple(self):
+        return {
+                    "title":"exemple",
+                    "artist":"John Smith",
+                    "album":"Anonyme",  
+                    "release_date":2000,
+                    "genre":"Classic",
+                    "publisher":"Esiee",
+                    "composer":"Esiee",
+                    "duration":200.00,
+                    "bit_rate":320
+                }
+
     def __get_file_songs(self, source):
         songs = dict()
+        songs["exemple"] = self.__generateExemple()
         for filename in os.listdir(source):
             print(filename)
             if filename.endswith(".mp3"):
