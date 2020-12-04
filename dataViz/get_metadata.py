@@ -23,12 +23,13 @@ class GetMetadata:
 
     def __get_file_songs(self, source):
         songs = dict()
-        print(os.listdir(source))
         for filename in os.listdir(source):
+            print(filename)
             if filename.endswith(".mp3"):
                 song = eyed3.load(source + filename)
-                if song.tag.title is not None:
-                    songs[song.tag.title] = {"title": song.tag.title,
+                if song is not None and song.tag is not None and song.tag.title is not None:
+                    songs[song.tag.title] = {
+                                "title": song.tag.title,
                                  "artist": song.tag.artist,
                                  "album": song.tag.album,
                                  "release_date": song.tag.release_date,
@@ -46,15 +47,17 @@ class GetMetadata:
                         elif key == "bit_rate":
                             temp_song["bit_rate"] = int(str(list(map(int, re.findall("\d+", temp_song["bit_rate"])))).strip("[]"))
                         elif key == "release_date":
-                            temp_song["release_date"] = int(str(temp_song["release_date"]))
+                            try:
+                                temp_song["release_date"] = int(str(temp_song["release_date"]))
+                            except:
+                                temp_song.pop(key)
                         elif key == "album" and temp_song["album"] == "[non-album tracks]":
                             temp_song["album"] = "Single"
                     songs[song.tag.title] = temp_song
-
         return songs
 
     def get_songs(self, source):
         if source.endswith(".json"):
             return self.__get_json_songs(source)
-        elif source == "dataViz/Library/":
+        else :
             return self.__get_file_songs(source)
