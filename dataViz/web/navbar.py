@@ -12,6 +12,7 @@ nav = dbc.NavbarSimple(
         dbc.NavItem(dbc.NavLink("Liste fichier", href="list")),
         dbc.NavItem(dbc.NavLink("Accueil", href="/")),
         dbc.NavItem(dbc.NavLink("Year", href="year")),
+        dbc.NavItem(dbc.NavLink("Popular genres", href="popular_genres")),
         dbc.DropdownMenu(
             children=[
                 dbc.DropdownMenuItem("More pages", header=True),
