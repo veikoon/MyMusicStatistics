@@ -2,7 +2,7 @@
 from get_metadata import GetMetadata
 from web.index import Index
 import argparse
-import pandas as pd
+import os
 
 
 class Launcher:
@@ -18,5 +18,4 @@ class Launcher:
             source = args.j
         get_metadata = GetMetadata()
         songs = get_metadata.get_songs(source)
-        #print(songs)
         Index().run_server(songs)
