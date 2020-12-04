@@ -26,18 +26,20 @@ class PopularGenres:
             for genre in genres:
                 sub_dict[year][genre] = 0
             for song in songs:
-                if year == songs[song]["release_date"]:
-                    sub_dict[year][songs[song]["genre"]] += 1
+                if "release_date" in songs[song] and "genre" in songs[song]:
+                    if year == songs[song]["release_date"]:
+                        sub_dict[year][songs[song]["genre"]] += 1
+
+
         popular_genres = pd.concat({k: pd.Series(v) for k, v in sub_dict.items()}).reset_index()
         popular_genres.columns = ['year', 'genre','count']
-
-
+        year_sort = popular_genres.sort_values(by="year", ascending=True)
 
         fig = px.bar(
-            popular_genres,
+            year_sort,
             x="genre",
             y="count",
-            barmode="group"
+            animation_frame="year",
         )
 
         graphique = dcc.Graph(
