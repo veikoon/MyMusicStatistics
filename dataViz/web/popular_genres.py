@@ -44,7 +44,7 @@ class PopularGenres:
             x="genre",
             y="count",
             color="genre",
-            range_y=[0,50],
+            range_y=[0, 20],
             animation_frame="year",
         )
 
