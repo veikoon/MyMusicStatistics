@@ -48,16 +48,16 @@ class PopularGenres:
             animation_frame="year",
         )
 
-        graphique = dcc.Graph(
-            id='example-graph',
+        graph = dcc.Graph(
+            id='pop-genre-graph',
             figure=fig
         )
 
-        layout_year = html.Div(
+        layout_GAD = html.Div(
             children=[
                 nav,
-                graphique,
+                graph,
             ]
         )
 
-        return layout_year
+        return layout_GAD
