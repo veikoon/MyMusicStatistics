@@ -9,6 +9,7 @@ from web.home import Home
 from web.list_file import ListFile
 from web.year import Year
 from web.popular_genres import PopularGenres
+from web.average_duration import AverageGenreDuration
 from dash.dependencies import Input, Output
 from web.app import app
 
@@ -20,11 +21,13 @@ class Index:
         home = Home()
         year = Year()
         popular_genres = PopularGenres()
+        GAD = AverageGenreDuration()
 
         layout_list = liste.get_layout(songs)
         layout_home = home.get_layout()
         layout_year = year.get_layout(songs)
         layout_popular_genres = popular_genres.get_layout(songs)
+        layout_GAD = GAD.get_layout(songs)
 
         app.layout = html.Div([
             dcc.Location(id='url', refresh=False),
@@ -44,6 +47,8 @@ class Index:
                 return layout_year
             elif pathname == '/popular_genres':
                 return layout_popular_genres
+            elif pathname == '/average_genre_duration':
+                return layout_GAD
             else:
                 return '404'
 
