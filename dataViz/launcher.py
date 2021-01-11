@@ -12,7 +12,7 @@ class Launcher:
         parser = argparse.ArgumentParser(description="Visualize song data.")
         parser.add_argument("-j", metavar="JSON File", help="source metadata from JSON file")
         args = parser.parse_args()
-        source = "dataViz/Library/"
+        source = "dataViz/assets/"
         if args.j:
             source = args.j
         metadata = Metadata()

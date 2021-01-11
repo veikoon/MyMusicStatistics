@@ -29,7 +29,7 @@ class Year:
                     {'x': list(sub_dict.keys()), 'y': list(sub_dict.values()), 'type': 'bar', 'name': 'SF'},
                 ],
                 'layout': {
-                    'title': 'Dash Data Visualization'
+                    'title': 'Number of songs per year'
                 }
             }
         )

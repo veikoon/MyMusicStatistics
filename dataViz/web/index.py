@@ -24,7 +24,7 @@ class Index:
         GAD = AverageGenreDuration()
 
         layout_list = liste.get_layout(songs)
-        layout_home = home.get_layout()
+        layout_home = home.get_layout(songs)
         layout_year = year.get_layout(songs)
         layout_popular_genres = popular_genres.get_layout(songs)
         layout_GAD = GAD.get_layout(songs)
