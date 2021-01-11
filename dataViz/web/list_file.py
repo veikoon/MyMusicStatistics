@@ -1,23 +1,34 @@
-#
-# Imports
-#
-
 import dash_html_components as html
-import dash_bootstrap_components as dbc
 import dash_table
-from dash.dependencies import Input, Output, State
+
 from web.navbar import nav
-from web.app import app
 
 
 class ListFile:
+    """The ListFile module lists all the songs, along with their respective metadata, contained in the server database.
 
-    def get_layout(self, songs):
+    """
+    def get_layout(self, songs: dict) -> html.Div:
+        """Creates dashboard layout.
+
+        Parameters
+        ----------
+        songs:  dict
+                The dictionary containing songs with their metadata.
+
+        Returns
+        -------
+        html.Div
+            A HTML division containing the dashboard.
+        """
+        # Define the column names.
         columns = ["title", "artist", "album", "release_date", "genre", "publisher", "composer", "duration", "bit_rate"]
+
         tab = list()
         for key in songs.keys():
             tab.append(songs[key])
 
+        # Create the table which will display all the songs of the server's database.
         table = dash_table.DataTable(
             data=tab,
             sort_action='native',
@@ -45,6 +56,14 @@ class ListFile:
             ],
         )
 
+        # Create the dashboard.
+        layout_list = html.Div([
+                nav,
+                table,
+        ], id="list_file")
+
+        return layout_list
+
         #collapse = html.Div(
         #    [
         #        dbc.Button(
@@ -59,10 +78,6 @@ class ListFile:
         #        ),
         #    ]
         #)
-        layout_list = html.Div([
-                nav,
-                table,
-        ], id="list_file")
 
         #@app.callback(
         #    Output("collapse", "is_open"),
@@ -73,5 +88,3 @@ class ListFile:
         #    if n:
         #        return not is_open
         #    return is_open
-
-        return layout_list

@@ -94,7 +94,7 @@ class PopularGenres:
             figure=fig
         )
 
-        # Creates the dashboard.
+        # Create the dashboard.
         layout_GAD = html.Div(
             children=[
                 nav,
