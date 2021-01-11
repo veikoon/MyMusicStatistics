@@ -13,7 +13,7 @@ from web.app import app
 class ListFile:
 
     def get_layout(self, songs):
-        collumns = songs.get("exemple").keys()
+        columns = songs.get("example").keys()
 
         tab = list()
         for key in songs.keys():
@@ -23,7 +23,7 @@ class ListFile:
             data=tab,
             sort_action='native',
             id='table',
-            columns=[{"name": i, "id": i} for i in collumns],
+            columns=[{"name": i, "id": i} for i in columns],
             fixed_rows={'headers': True},
             style_table={
                 'maxHeight': '50ex',

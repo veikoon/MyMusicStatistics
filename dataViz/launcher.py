@@ -1,8 +1,7 @@
-#from web.index import Index
-from get_metadata import GetMetadata
-from web.index import Index
 import argparse
-import os
+
+from get_metadata import Metadata
+from web.index import Index
 
 
 class Launcher:
@@ -16,6 +15,6 @@ class Launcher:
         source = "dataViz/Library/"
         if args.j:
             source = args.j
-        get_metadata = GetMetadata()
-        songs = get_metadata.get_songs(source)
+        metadata = Metadata()
+        songs = metadata.get_songs(source)
         Index().run_server(songs)
