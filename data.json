@@ -1,15 +1,4 @@
 {
-   "exemple":{
-      "title":"exemple",
-      "artist":"John Smith",
-      "album":"Anonyme",  
-      "release_date":2000,
-      "genre":"Classic",
-      "publisher":"Esiee",
-      "composer":"Esiee",
-      "duration":200.00,
-      "bit_rate":320
-   },
    "Aqatrip":{
       "title":"Aqatrip",
       "artist":"Hippocampe Fou",

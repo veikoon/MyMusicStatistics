@@ -40,12 +40,11 @@ class Metadata:
         else:
             try:
                 songs = json.load(file, encoding="latin-1")
-                songs["example"] = self.__generateExample()
                 file.close()
                 return songs
             except JSONDecodeError:
                 raise RuntimeError("JSON file contains errors.")
-
+    """
     def __generateExample(self):
         return {
                     "title": "example",
@@ -58,7 +57,7 @@ class Metadata:
                     "duration": 200.00,
                     "bit_rate": 320
                 }
-
+    """
     def __get_file_songs(self, source):
         """Retrieve songs dictionary from mp3 files.
 
@@ -79,7 +78,6 @@ class Metadata:
 
         """
         songs = dict()
-        songs["example"] = self.__generateExample()
         for filename in os.listdir(source):
             if filename.endswith(".mp3"):
                 song = eyed3.load(source + filename)

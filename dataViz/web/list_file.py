@@ -13,7 +13,7 @@ from web.app import app
 class ListFile:
 
     def get_layout(self, songs):
-        columns = songs["example"].keys()
+        columns = ["title", "artist", "album", "release_date", "genre", "publisher", "composer", "duration", "bit_rate"]
         tab = list()
         for key in songs.keys():
             tab.append(songs[key])
