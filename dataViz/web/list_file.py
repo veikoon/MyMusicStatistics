@@ -1,6 +1,6 @@
 import dash_html_components as html
 import dash_table
-from web.navbar import nav
+from web.utils import nav
 
 
 class ListFile:
@@ -55,7 +55,7 @@ class ListFile:
             ],
         )
 
-        # Create the dashboard.
+        # Group the whole layout in a single HTML division.
         layout_list = html.Div([
                 nav,
                 table,

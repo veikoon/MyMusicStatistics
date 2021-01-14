@@ -2,7 +2,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 
-from web.app import app
+from web.utils import app
 from web.average_duration import AverageGenreDuration
 from web.home import Home
 from web.list_file import ListFile

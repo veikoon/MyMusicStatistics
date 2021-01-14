@@ -5,7 +5,6 @@ import re
 from json import JSONDecodeError
 
 import eyed3
-from pprint import pprint
 
 
 class Metadata:

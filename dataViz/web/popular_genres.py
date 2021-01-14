@@ -3,7 +3,7 @@ import dash_html_components as html
 import pandas as pd
 import plotly.express as px
 
-from web.navbar import nav
+from web.utils import nav
 
 
 class PopularGenres:
@@ -94,7 +94,7 @@ class PopularGenres:
             figure=fig
         )
 
-        # Create the dashboard.
+        # Group the whole layout in a single HTML division.
         layout_GAD = html.Div(
             children=[
                 nav,

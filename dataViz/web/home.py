@@ -1,19 +1,32 @@
-#
-# Imports
-#
-
-import dash_html_components as html
-import dash_core_components as dcc
 import dash_bootstrap_components as dbc
-
+import dash_core_components as dcc
+import dash_html_components as html
 from dash.dependencies import Input, Output, State
-from web.app import app
-from web.navbar import nav
+
+from web.utils import app
+from web.utils import nav
+
 
 class Home:
-    
-    def get_layout(self, songs):
+    """The Home module acts as the website's homepage where basic graphs appear.
 
+    """
+    
+    def get_layout(self, songs: dict) -> html.Div:
+        """Creates the dashboard layout with a basic statistics graph a genre pie chart.
+
+        Parameters
+        ----------
+        songs:  dict
+                The dictionary containing songs with their metadata.
+
+        Returns
+        -------
+        html.Div
+            A HTML division containing the dashboard.
+
+        """
+        # Prepare the data that is to be shown.
         columns = ["title", "artist", "album", "release_date", "genre", "publisher", "composer", "duration", "bit_rate"]
         complete = 0
         years = []
@@ -36,19 +49,19 @@ class Home:
         if None in genre:
             genre["Unknown"] = genre.pop(None)
 
-
-
+        # Create basic statistics.
         quick_stat = html.Div(
             children=[
                 dbc.Alert("Music number : " + str(len(songs)) , color="primary"),
                 dbc.Alert("Music number with complete data : " + str(complete) , color="success"),
                 dbc.Alert("Music number with incomplete data : " + str(len(songs) - complete) , color="danger"),
-                dbc.Alert("Musics date from : " + str(min(years)) + " to " + str(max(years)), color="dark"),
-                dbc.Alert("Musics are from " + str(len(years)) + " different years", color="dark"),
-                dbc.Alert("Musics are from " + str(len(genre)) + " different genres", color="dark"),
+                dbc.Alert("Music dates range from : " + str(min(years)) + " to " + str(max(years)), color="dark"),
+                dbc.Alert("Music is from " + str(len(years)) + " different years", color="dark"),
+                dbc.Alert("Music is from " + str(len(genre)) + " different genres", color="dark"),
             ]
         )
 
+        # Create the "Number of genres" pie chart.
         pie = dcc.Graph(
             id="piechart",
             figure={
@@ -63,13 +76,14 @@ class Home:
                     }
                 ],
                 "layout": {
-                    "title": "Number of Genre",
+                    "title": "Number of genres",
                     "showlegend": True,
                     "autosize": True,
                 },
             },
         )
 
+        # Make the pie chart appear from a collapsable button.
         collapse = html.Div(
             [
                 dbc.Button(
@@ -85,14 +99,6 @@ class Home:
             ], style={'marginTop': 50, 'textAlign': 'center',}
         )
 
-        layout_home = html.Div(
-            children=[
-                nav,
-                collapse,
-                pie,
-            ]
-        )
-
         @app.callback(
             Output("collapse", "is_open"),
             [Input("collapse-button", "n_clicks")],
@@ -102,5 +108,14 @@ class Home:
             if n:
                 return not is_open
             return is_open
+
+        # Group the whole layout in a single HTML division.
+        layout_home = html.Div(
+            children=[
+                nav,
+                collapse,
+                pie,
+            ]
+        )
 
         return layout_home

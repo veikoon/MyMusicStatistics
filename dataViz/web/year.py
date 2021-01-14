@@ -1,7 +1,7 @@
 import dash_core_components as dcc
 import dash_html_components as html
 
-from web.navbar import nav
+from web.utils import nav
 
 
 class Year:
@@ -50,7 +50,7 @@ class Year:
         songs_per_year = self.__get_songs_per_year(songs)
 
         # Create graph.
-        graphique = dcc.Graph(
+        graph= dcc.Graph(
             id='example-graph',
             figure={
                 'data': [
@@ -61,10 +61,11 @@ class Year:
                 }
             }
         )
+        # Group the whole layout in a single HTML division.
         layout_year = html.Div(
             children=[
                 nav,
-                graphique,
+                graph,
             ]
         )
 
