@@ -1,7 +1,7 @@
 # Functional Overview
 The dataViz program allows to analyze music data by generating different graphs.
 
-To preview the program's results without running it, a pre-generated page has been prepared at this URL : http://dash.monnot.org/ 
+To preview the program's results without running it, a pre-generated page has been prepared at this URL : http://dataviz.monnot.org/
 
 ### Dashboard information :
 #### Home
